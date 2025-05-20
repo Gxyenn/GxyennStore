@@ -3,10 +3,29 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "models/**",
+          "utils/**",
+          "uploads/**"
+        ]
+      }
     },
     {
       "src": "index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "login.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "register.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "admin.html",
       "use": "@vercel/static"
     }
   ],
@@ -17,27 +36,43 @@
     },
     {
       "src": "/uploads/proofs/(.*)",
-      "dest": "/uploads/proofs/$1"
+      "handle": "filesystem"
     },
     {
-      "src": "/(.*)",
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))$",
       "handle": "filesystem"
+    },
+    {
+      "src": "/index.html",
+      "dest": "index.html"
+    },
+    {
+      "src": "/login.html",
+      "dest": "login.html"
+    },
+    {
+      "src": "/login",
+      "dest": "login.html"
+    },
+    {
+      "src": "/register.html",
+      "dest": "register.html"
+    },
+    {
+      "src": "/register",
+      "dest": "register.html"
+    },
+    {
+      "src": "/admin.html",
+      "dest": "admin.html"
+    },
+    {
+      "src": "/admin",
+      "dest": "admin.html"
     },
     {
       "src": "/(.*)",
       "dest": "index.html"
     }
-  ],
-  "env": {
-    "MONGODB_URI": "@mongodb_uri",
-    "PTERODACTYL_DOMAIN": "https://mypanellgxyenz.zans.my.id",
-    "PTERODACTYL_APP_API_KEY": "ptla_Lk2XdbrFHww1E9agPou7FaxC2aouGtiMf9rg6mmte0h",
-    "MAILTRAP_HOST": "smtp.mailtrap.io",
-    "MAILTRAP_PORT": "2525",
-    "MAILTRAP_USER": "@mailtrap_user",
-    "MAILTRAP_PASS": "@mailtrap_pass",
-    "ADMIN_EMAIL": "@your_admin_email",
-    "FROM_EMAIL": "@your_store_from_email",
-    "BASE_URL": "@your_app_base_url"
-  }
+  ]
 }
