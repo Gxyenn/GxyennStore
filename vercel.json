@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server.js"
+    },
+    {
+      "src": "/uploads/proofs/(.*)",
+      "dest": "/uploads/proofs/$1"
+    },
+    {
+      "src": "/(.*)",
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "index.html"
+    }
+  ],
+  "env": {
+    "MONGODB_URI": "@mongodb_uri",
+    "PTERODACTYL_DOMAIN": "https://mypanellgxyenz.zans.my.id",
+    "PTERODACTYL_APP_API_KEY": "ptla_Lk2XdbrFHww1E9agPou7FaxC2aouGtiMf9rg6mmte0h",
+    "MAILTRAP_HOST": "smtp.mailtrap.io",
+    "MAILTRAP_PORT": "2525",
+    "MAILTRAP_USER": "@mailtrap_user",
+    "MAILTRAP_PASS": "@mailtrap_pass",
+    "ADMIN_EMAIL": "@your_admin_email",
+    "FROM_EMAIL": "@your_store_from_email",
+    "BASE_URL": "@your_app_base_url"
+  }
+}
