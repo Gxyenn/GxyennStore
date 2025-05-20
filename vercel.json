@@ -8,7 +8,7 @@
         "includeFiles": [
           "models/**",
           "utils/**",
-          "uploads/**"
+          "uploads/**" 
         ]
       }
     },
@@ -35,12 +35,8 @@
       "dest": "server.js"
     },
     {
-      "src": "/uploads/proofs/(.*)",
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))$",
-      "handle": "filesystem"
+      "src": "/uploads/proofs/(.*)"
+ 
     },
     {
       "src": "/index.html",
@@ -72,7 +68,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "index.html"
+      "dest": "index.html" 
     }
   ]
 }
